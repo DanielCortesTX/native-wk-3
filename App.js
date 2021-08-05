@@ -5,15 +5,23 @@ import Main from './components/MainComponent';
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
 
-const store = ConfigureStore();
+import { PersistGate } from 'redux-persist/es/integration/react';
+import Loading from './components/LoadingComponent';
+
+const { persistor, store } = ConfigureStore();
+
 
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
     <Provider store={store}>
-          <Main />
-      </Provider>
+    	<PersistGate
+    		loading={<Loading />}
+    		persistor={persistor}>
+    		<Main />
+		</PersistGate>
+    </Provider>
   );
 }
 
