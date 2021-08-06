@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet,
   Picker, Switch, Button, Modal } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import * as Animatable from 'react-native-animatable';
 
 class Reservation extends Component {
 
@@ -42,7 +43,8 @@ class Reservation extends Component {
 
     render() {
         return (
-            <ScrollView>
+            
+            <AnimatableComponent.View animation='zoomIn' duration={2000} delay={1000}>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Number of Campers</Text>
                     <Picker
@@ -124,7 +126,7 @@ class Reservation extends Component {
                         />
                     </View>
                 </Modal>
-            </ScrollView>
+            </AnimatableComponent.View>
         );
     }
 }
